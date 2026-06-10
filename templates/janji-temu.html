@@ -100,7 +100,41 @@
 
                 <!-- Step 1: Filter -->
                 <div id="formStep1">
+                    <div class="form-info">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#3b82f6" style="margin-right: 8px; flex-shrink: 0;">
+                            <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
+                            <text x="12" y="16" text-anchor="middle" fill="currentColor" font-size="14" font-weight="bold">?</text>
+                        </svg>
+                        <div>
+                            <strong>Bantuan Rekomendasi Poli:</strong> Isi keluhan, usia, dan durasi keluhan untuk mendapatkan rekomendasi poli yang tepat. Sistem akan membantu mengarahkan Anda ke spesialisasi yang sesuai.
+                        </div>
+                    </div>
+
                     <div class="form-row">
+                        <div class="form-group">
+                            <label for="chiefComplaint">Keluhan Utama <span style="color: #e53e3e;">*</span></label>
+                            <input type="text" id="chiefComplaint" placeholder="Contoh: demam tinggi, sakit gigi, batuk...">
+                        </div>
+                        <div class="form-group">
+                            <label for="patientAge">Usia Pasien <span style="color: #e53e3e;">*</span></label>
+                            <input type="number" id="patientAge" min="0" max="120" placeholder="Usia dalam tahun">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="complaintDuration">Durasi Keluhan (hari) <span style="color: #e53e3e;">*</span></label>
+                            <input type="number" id="complaintDuration" min="0" max="3650" placeholder="Berapa hari keluhan berlangsung?">
+                        </div>
+                        <div class="form-group">
+                            <label for="recommendedPoli">Rekomendasi Poli Tujuan</label>
+                            <input type="text" id="recommendedPoli" readonly placeholder="Hasil rekomendasi akan tampil di sini">
+                        </div>
+                    </div>
+
+                    <button class="btn-submit" type="button" style="background: #06b6d4;" onclick="getPoliRecommendation()">🔍 Dapatkan Rekomendasi Poli</button>
+
+                    <div class="form-row" style="margin-top: 24px;">
                         <div class="form-group">
                             <label for="branch">Pilih Cabang PensKes</label>
                             <select id="branch">
@@ -313,6 +347,7 @@
     </div>
 
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/poli-recommendation.js') }}"></script>
 </body>
 
 </html>
